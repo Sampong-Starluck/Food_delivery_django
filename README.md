@@ -1,6 +1,6 @@
 # Goal of this project
 
-I created this project just test Django framework.
+I created this project just to learn Django framework.
 
 ## Original sources and author
 
