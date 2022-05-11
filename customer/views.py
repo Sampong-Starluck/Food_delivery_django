@@ -21,7 +21,7 @@ class Order(View):
 
     def get(self, request, *args, **kwargs):
         appetizers = MenuItem.objects.filter(
-            category__name__constains='Appetizer'
+            category__name__contains='Appetizer'
         )
         entres = MenuItem.objects.filter(
             category__name__contains='Entre'
@@ -125,16 +125,14 @@ class OrderConfirmation(View):
                       context
                       )
 
-
     def post(self, request, pk, *args, **kwargs):
-     data = json.loads(request.body)
-     if data['is_paid']:
-         order = OrderModel.objects.get(pk=pk)
-         order.is_paid = True
-         order.save()
-         
-         return redirect('payment-comfirmation')
-    
+        data = json.loads(request.body)
+        if data['is_paid']:
+            order = OrderModel.objects.get(pk=pk)
+            order.is_paid = True
+            order.save()
+
+            return redirect('payment-comfirmation')
 
 
 class OrderPayConfirmation(View):
@@ -142,3 +140,25 @@ class OrderPayConfirmation(View):
         return render(
             request, 'customer/order_pay_comfirmation.html'
         )
+
+
+class Menu(View):
+    def get(self, request, *args, **kwargs):
+        menu_items = MenuItem.objects.all()
+
+        context = {'menu_items': menu_items}
+        return render(request, 'customer/menu.html', context)
+
+
+class MenuSearch(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+
+        menu_items = MenuItem.objects.filter(
+            Q(name__icontains=query) |
+            Q(price__icontains=query) |
+            Q(description__icontains=query)
+        )
+        
+        context = {'menu_items': menu_items}
+        return render(request, 'customer/menu.html', context)

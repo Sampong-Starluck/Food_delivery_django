@@ -148,4 +148,4 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ACCOUNT_ADAPTER = 'restaurent.account_adapter.NoNewUserAccountAdapter'
+ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUserAccountAdapter'

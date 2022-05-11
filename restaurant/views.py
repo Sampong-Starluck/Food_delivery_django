@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from customer.models import OrderModel
+from customer.models import MenuItem, OrderModel
 from django.utils.timezone import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -94,3 +94,4 @@ class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
     
     def test_func(self):
         return self.request.user.groups.filter(name='Staff').exists()
+
