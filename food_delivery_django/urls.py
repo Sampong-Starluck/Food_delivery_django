@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from customers.views import Index, About, Order, OrderConfirmation
+from customer.views import Index, About, Order, OrderConfirmation, OrderPayConfirmation
 # from django.templatetags.static import static
 from django.conf.urls.static import static
 
@@ -26,5 +26,11 @@ urlpatterns = [
     path('about/', About.as_view(), name='about'),
     path('order/', Order.as_view(), name='order'),
     path('order-confirmation/<int:pk>/',
-         OrderConfirmation.as_view(), name='order-confirmation'),
+         OrderConfirmation.as_view(),
+         name='order-confirmation'),
+    path('payment-confirmation/',
+         OrderPayConfirmation.as_view(),
+         name='payment-confirmation'),
+    path('accounts/', include('allauth.urls')),
+    path('restaurant/', include('restaurant.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

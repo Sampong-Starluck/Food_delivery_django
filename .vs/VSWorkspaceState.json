@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\customers",
-    "\\customers\\template",
-    "\\customers\\template\\customer"
+    "\\customer",
+    "\\customer\\template",
+    "\\customer\\template\\customer"
   ],
-  "SelectedNode": "\\customers\\template\\customer\\about.html",
+  "SelectedNode": "\\customer\\template\\customer\\about.html",
   "PreviewInSolutionExplorer": false
 }
