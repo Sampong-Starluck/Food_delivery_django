@@ -1,1 +1,0 @@
-user: sampong, email: sampong@gmail.com, password: sampong3788
